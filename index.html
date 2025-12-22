@@ -5,6 +5,43 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vibe Pomodoro — Nebula + Meteors (Down-Right) + Drift Stars (No Trail) + Cute Rocket Heart</title>
   <style>
+    #startGate{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  background: rgba(5, 8, 20, .35);
+  z-index: 9999;
+  cursor: pointer;
+}
+#startGate .gateCard{
+  width: min(520px, calc(100vw - 40px));
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(140, 220, 255, .25);
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  background:
+    linear-gradient(180deg, rgba(30, 50, 80, .35), rgba(20, 12, 40, .35));
+}
+#startGate .gateTitle{
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+#startGate .gateDesc{
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: .92;
+}
+#startGate .gateHint{
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: .75;
+}
+
     :root{
       --bg0:#040611;
       --bg1:#050a1a;
@@ -837,6 +874,29 @@ const exitFocusBtn = $('#exitFocusBtn');
       const ts = document.getElementById('timeSettings');
       if(ts) ts.open = false;
     });
+    // ✅ 一鍵開始：解鎖瀏覽器音樂播放限制
+(function(){
+  const gate = document.getElementById('startGate');
+  if(!gate) return;
+
+  const tryStart = () => {
+    // 讓預設選到第一首（做人的小曲）
+    const sel = document.getElementById('trackSelect');
+    if (sel && sel.options.length > 0) {
+      sel.selectedIndex = 0;
+      sel.dispatchEvent(new Event('change'));
+    }
+
+    // 直接觸發播放按鈕（沿用你原本的播放流程）
+    const playBtn = document.getElementById('playBtn');
+    if (playBtn) playBtn.click();
+
+    gate.remove(); // 移除遮罩
+  };
+
+  gate.addEventListener('click', tryStart, { once: true });
+})();
+
   }
 
 
@@ -2542,5 +2602,17 @@ async function init(){
   init();
 })();
 </script>
+  <!-- 🚀 一鍵開始（解鎖音樂播放） -->
+<div id="startGate" role="button" aria-label="開始體驗">
+  <div class="gateCard">
+    <div class="gateTitle">✨ 一鍵開始體驗</div>
+    <div class="gateDesc">
+      點一下就會播放 <b>預設第一首：做人的小曲</b><br/>
+      進入 <b>超專注模式</b> 會有驚喜（建議搭配音樂）
+    </div>
+    <div class="gateHint">點擊任意處開始</div>
+  </div>
+</div>
+
 </body>
 </html>
