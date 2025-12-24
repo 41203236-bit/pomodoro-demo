@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的作品集集散地</title>
+    <style>
+        body {
+            margin: 0;
+            background: #050a1a;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 { margin-bottom: 50px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .container {
+            display: flex;
+            gap: 30px;
+        }
+        .card {
+            width: 280px;
+            padding: 40px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #66ffcc;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        .card h2 { margin-top: 0; color: #66ffcc; }
+        .card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <h1>請選擇進入的空間</h1>
+
+    <div class="container">
+        <a href="vibe.html" class="card">
+            <h2>Vibe Pomodoro</h2>
+            <p>沈浸式星空番茄鐘，讓你專注於當下。</p>
+        </a>
+
+        <a href="game.html" class="card">
+            <h2>光影對決</h2>
+            <p>劇情式圈圈叉叉，挑戰你的策略思維。</p>
+        </a>
+    </div>
+
+</body>
+</html>
