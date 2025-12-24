@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qithub 入口總站</title>
+    <style>
+        :root {
+            --tomato-red: #ff5e5e;
+            --battle-gold: #f6d26a;
+            --battle-purple: #9a7bff;
+        }
+
+        body {
+            margin: 0;
+            background: #050a1a;
+            color: white;
+            font-family: 'Segoe UI', "Noto Sans TC", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-bottom: 60px;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            font-weight: 300;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* 基礎卡片樣式 */
+        .card {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            overflow: hidden;
+        }
+
+        /* --- 番茄鐘樣式 --- */
+        .card-tomato:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: var(--tomato-red);
+            box-shadow: 0 20px 50px rgba(255, 94, 94, 0.3);
+        }
+
+        .icon-tomato {
+            font-size: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255,94,94,0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .card-tomato:hover .icon-tomato {
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        /* --- 對決領域樣式 --- */
+        .card-battle:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: var(--battle-gold);
+            box-shadow: 0 20px 50px rgba(154, 123, 255, 0.3);
+        }
+
+        /* 對決領域背景特效 */
+        .battle-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(246, 210, 106, 0.1) 0%, rgba(154, 123, 255, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .card-battle:hover .battle-bg {
+            opacity: 1;
+        }
+
+        .icon-battle {
+            font-size: 80px;
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* 雙劍對擊動畫 */
+        .card-battle:hover .icon-battle {
+            animation: clash 0.2s infinite;
+        }
+
+        /* 字體與描述 */
+        h2 { margin: 10px 0; font-size: 1.5rem; letter-spacing: 1px; }
+        p { font-size: 0.9rem; opacity: 0.6; padding: 0 30px; line-height: 1.6; }
+
+        .tomato-text { color: var(--tomato-red); }
+        .battle-text { 
+            background: linear-gradient(90deg, var(--battle-gold), var(--battle-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* 動畫效果庫 */
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        @keyframes clash {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(1) rotate(-5deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>探索你的空間</h1>
+
+    <div class="container">
+        <a href="vibe.html" class="card card-tomato">
+            <div class="icon-tomato">🍅</div>
+            <h2 class="tomato-text">Vibe Pomodoro</h2>
+            <p>放鬆心情，與可愛小番茄一起專注。享受星空下的寧靜時光。</p>
+        </a>
+
+        <a href="game.html" class="card card-battle">
+            <div class="battle-bg"></div>
+            <div class="icon-battle">⚔️</div>
+            <h2 class="battle-text">光影對決</h2>
+            <p>進入力量與策略的碰撞領域。在光與影的交錯中贏得最後勝利。</p>
+        </a>
+    </div>
+
+</body>
+</html>
