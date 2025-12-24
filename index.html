@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>張智喨 的 Qithub 空間</title>
+    <style>
+        :root {
+            --tomato-red: #ff5e5e;
+            --battle-gold: #f6d26a;
+            --battle-purple: #9a7bff;
+        }
+
+        body {
+            margin: 0;
+            background: #050a1a;
+            color: white;
+            font-family: 'Segoe UI', "Noto Sans TC", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 標題區域 */
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            font-weight: 300;
+        }
+
+        /* 姓名學號樣式 - 放在標題下方的小字 */
+        .student-info-top {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* 基礎卡片樣式 */
+        .card {
+            position: relative;
+            width: 300px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.05);
+        }
+
+        /* --- 番茄鐘樣式 --- */
+        .card-tomato:hover {
+            border-color: var(--tomato-red);
+            box-shadow: 0 20px 50px rgba(255, 94, 94, 0.2);
+        }
+
+        .icon-tomato {
+            font-size: 80px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-tomato:hover .icon-tomato {
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        /* --- 對決領域樣式 --- */
+        .card-battle:hover {
+            border-color: var(--battle-gold);
+            box-shadow: 0 20px 50px rgba(154, 123, 255, 0.2);
+        }
+
+        .battle-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(246, 210, 106, 0.1) 0%, rgba(154, 123, 255, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .card-battle:hover .battle-bg { opacity: 1; }
+
+        .icon-battle {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .card-battle:hover .icon-battle {
+            animation: clash 0.2s infinite;
+        }
+
+        h2 { margin: 10px 0; font-size: 1.5rem; }
+        p { font-size: 0.9rem; opacity: 0.6; padding: 0 30px; line-height: 1.6; text-align: center;}
+
+        .tomato-text { color: var(--tomato-red); }
+        .battle-text { 
+            background: linear-gradient(90deg, var(--battle-gold), var(--battle-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* 底部頁腳樣式 (再次強調姓名學號) */
+        footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+            width: 200px;
+            text-align: center;
+        }
+
+        /* 動畫效果庫 */
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        @keyframes clash {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(1) rotate(-5deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <h1>探索你的空間</h1>
+        <div class="student-info-top">開發者：張智喨 | 學號：41203236</div>
+    </div>
+
+    <div class="container">
+        <a href="vibe.html" class="card card-tomato">
+            <div class="icon-tomato">🍅</div>
+            <h2 class="tomato-text">Vibe Pomodoro</h2>
+            <p>與可愛小番茄一起進入專注時光</p>
+        </a>
+
+        <a href="game.html" class="card card-battle">
+            <div class="battle-bg"></div>
+            <div class="icon-battle">⚔️</div>
+            <h2 class="battle-text">光影對決</h2>
+            <p>在策略碰撞的領域贏得勝利</p>
+        </a>
+    </div>
+
+    <footer>
+        © 2024 張智喨 41203236
+    </footer>
+
+</body>
+</html>
